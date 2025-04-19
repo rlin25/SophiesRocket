@@ -17,3 +17,13 @@ def query_llm(prompt):
 
     result = response.json()
     return result['choices'][0]['message']['content']
+
+if __name__ == "__main__":
+    try:
+        print("Pinging Ollama API...")
+        res = requests.get("http://localhost:11434", timeout=5)
+        res.raise_for_status()
+        print("Response:", res.text)
+        print("✅ Ollama is reachable!")
+    except Exception as e:
+        print("❌ Failed to reach Ollama:", e)
