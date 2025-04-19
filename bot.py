@@ -91,4 +91,4 @@ async def on_message(message):
             await message.channel.send("Sorry, I couldn't process your request.")
 
 # Start the bot
-client.run(TOKEN)
+client.run(DISCORD_TOKEN)
