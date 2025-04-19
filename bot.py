@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 # Your Discord Bot Token
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+print(f"Token loaded: {DISCORD_TOKEN is not None}")
 
 # Ollama API URL and headers
 ollama_url = 'http://localhost:11434/api/chat'
@@ -45,15 +46,15 @@ def query_ollama(prompt):
                     # Decode and parse the chunk into JSON
                     chunk_data = chunk.decode("utf-8")
                     message_data = json.loads(chunk_data)
-                    
+
                     # Append the content of each chunk
                     if "message" in message_data and "content" in message_data["message"]:
                         combined_response += message_data["message"]["content"]
-                    
+
                     # Check if the response is complete
                     if message_data.get("done", False):
                         break  # End the loop when "done" is true
-                
+
                 except json.JSONDecodeError as e:
                     print(f"Error decoding JSON chunk: {e}")
                     continue
