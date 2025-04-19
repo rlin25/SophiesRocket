@@ -1,9 +1,12 @@
 import discord
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
 # Your Discord Bot Token
-TOKEN = 'MTM2Mjg3NDE4MTg4ODM4MDk5OA.GhQYqt.7Dkmzp-TKrwscFjuE5E0jRRQryI8eXngYapf34'
+load_dotenv()
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
 # Ollama API URL and headers
 ollama_url = 'http://localhost:11434/api/chat'
