@@ -1,7 +1,14 @@
 # Development Log
 
 ## 2025, April 19
-- Created `dev-log.md`
+- Recorded `dev-log.md` updates for 4/18 - 4/19
+- Changed host to Ollama
+  - Loaded OpenHermes 2 Mistral model
+- Fixed split JSON response error
+- Resolved Discord token exposure
+  - Attempted rebase of vulnerable file version
+- Worked around missing response package
+  -Created virtual environment
 
 ## 2025, April 18
 - Enable OpenAI-Compatible API
@@ -14,12 +21,12 @@
 - Tested Discord Connection
   - Invited bot to server using OAuth2
   - Logged in as **SophiesRocket#3384** successfully.
-  - Received 
+  - Received
 
 ## 2025, April 17
-- Setup GPU RunPod Instance
+- Setup GPU RunPod instance
   - GPU: x3 RTX 4090
   - Template: Text Generation WebUI
-- Load OpenHermes Mixtral Model
+- Load OpenHermes Mixtral model
   - Source: TheBloke/OpenHermes-2.5-Mistral-7B-GGUF
   - Model: openhermes-2.5-mistral-7b.Q5_K_M.gguf
