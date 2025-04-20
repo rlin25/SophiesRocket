@@ -1,14 +1,15 @@
 # Development Log
 
 ## 2025, April 19
-- Recorded `dev-log.md` updates for 4/18 - 4/19
-- Changed host to Ollama
-  - Loaded OpenHermes 2 Mistral model
-- Fixed split JSON response error
-- Resolved Discord token exposure
-  - Attempted rebase of vulnerable file version
-- Worked around missing response package
-  -Created virtual environment
+- Record `dev-log.md` updates for 4/18 - 4/19
+- Change host to Ollama
+  - Load OpenHermes 2 Mistral model
+- Fix split JSON response error
+- Resolve Discord token exposure
+  - Attempt rebase of vulnerable file version
+- Work around missing response package
+  -Create virtual environment
+- Test basic questions via Discord
 
 ## 2025, April 18
 - Enable OpenAI-Compatible API
@@ -18,10 +19,10 @@
   - Set configuration via [Discord Developer Portal](https://discord.com/developers/applications)
   - Stored Discord bot token in `.env` file
   - Set required **Privileged Gateway Intents**
-- Tested Discord Connection
-  - Invited bot to server using OAuth2
-  - Logged in as **SophiesRocket#3384** successfully.
-  - Received
+- Test Discord Connection
+  - Invite bot to custom server using OAuth2
+  - Log in as **SophiesRocket#3384** successfully.
+  - Received positive response
 
 ## 2025, April 17
 - Setup GPU RunPod instance
