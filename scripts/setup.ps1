@@ -11,12 +11,12 @@ Write-Host "Pulling OpenHermes model with Ollama..." -ForegroundColor Yellow
 ollama pull openhermes
 
 # Optional: Set up Python virtual environment
-if (Test-Path "requirements.txt") {
+if (Test-Path "..\requirements.txt") {
     Write-Host "Setting up Python virtual environment..." -ForegroundColor Yellow
     python -m venv venv
 
     .\venv\Scripts\Activate.ps1
-    pip install -r requirements.txt
+    pip install -r ..\requirements.txt
 }
 else {
     Write-Host "No requirements.txt found. Skipping Python setup." -ForegroundColor DarkGray

@@ -30,14 +30,16 @@ cd SophiesRocket
 Open **PowerShell** and run:
 
 ```powershell
+cd scripts
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./setup.ps1
 ```
 
 ## Running the Bot
-   ```bash
-   python bot.py
-   ```
+```bash
+cd ../src
+python bot.py
+```
 
 ---
 
