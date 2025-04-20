@@ -25,7 +25,7 @@ git clone https://github.com/yourusername/SophiesRocket.git
 cd SophiesRocket
 ```
 
-### 🪟 Windows (PowerShell)
+### Windows (PowerShell)
 
 Open **PowerShell** and run:
 
@@ -57,7 +57,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ## License
 
-MIT License. See the [LICENSE](LICENSE) file for more details.
+MIT License. See the [LICENSE](LICENSE.md) file for more details.
 
 ---
 
