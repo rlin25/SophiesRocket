@@ -1,34 +1,40 @@
 # SophiesRocket
 
-SophiesRocket is an AI-powered Discord chatbot built to interact with users in creative, intelligent, and fun ways. The bot is designed to be modular and easily extendable with features like LLM integrations, custom commands, and more.
+SophiesRocket is an AI-powered Discord chatbot powered by OpenHermes via Ollama. It is built to interact with users in creative, intelligent, and fun ways.
 
 ## Features
-- Responds to basic commands (`!ping`, `!help`)
-- Easily extendable with AI integrations
-- Customizable configuration for future updates
+
+- Uses [Ollama](https://ollama.com/) to run local LLMs
+- Streams replies from the OpenHermes model
+- Easily customizable for your own Discord bot logic
 
 ## Getting Started
 
 ### Prerequisites
-- Python 3.10 or higher
-- `pip` for installing dependencies
-- A Discord Bot Token (see Discord Developer Portal setup below)
-- [Ollama](https://ollama.com) for local LLM hosting
+- [Python 3.10](https://www.python.org/) or higher
+- [Ollama](https://ollama.com) for local LLM hosting  
+- A Discord Bot Token (see [Discord Developer Portal](https://discord.com/developers/applications) setup below)
 
-### Installation
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/SophiesRocket.git
-   cd SophiesRocket
-   ```
+## Quick Start
 
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Clone the repository
 
-5. **Run the bot**:
+```bash
+git clone https://github.com/yourusername/SophiesRocket.git
+cd SophiesRocket
+```
+
+### 🪟 Windows (PowerShell)
+
+Open **PowerShell** and run:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+./setup.ps1
+```
+
+## Running the Bot
    ```bash
    python bot.py
    ```
@@ -49,15 +55,6 @@ SophiesRocket is an AI-powered Discord chatbot built to interact with users in c
 
 ---
 
-## Roadmap
-
-- [x] Basic bot login and commands
-- [ ] Add GPT-style AI responses via local model (text-generation-webui)
-- [ ] Custom command framework for advanced bot interactions
-- [ ] Webhook/API integration for external services
-
----
-
 ## License
 
 MIT License. See the [LICENSE](LICENSE) file for more details.
@@ -67,3 +64,4 @@ MIT License. See the [LICENSE](LICENSE) file for more details.
 ## Acknowledgements
 
 - [discord.py](https://github.com/Rapptz/discord.py) - Python wrapper for the Discord API
+- [OpenHermes](https://huggingface.co/OpenHermes) - General purpose LLM model
