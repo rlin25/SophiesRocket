@@ -45,13 +45,13 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications).
 2. Click **"New Application"** and name it `SophiesRocket`.
-3. Under the **Bot** tab:
-   - Click **"Add Bot"**
-   - Enable **MESSAGE CONTENT INTENT** and other necessary intents.
-4. Under **OAuth2 > URL Generator**:
-   - Select **bot** scope
-   - Choose permissions like: `Read Messages`, `Send Messages`, `Embed Links`, `Use Slash Commands`
-   - Copy the generated URL and invite the bot to your server with appropriate permissions.
+3. In the sidebar, go to **"Bot"** → click **"Add Bot"** → confirm.
+4. Under **Token**, click **"Reset Token"** → **Copy** the token.
+    - **Keep this token secret**. Never commit it to GitHub.
+5. Under **OAuth2 > URL Generator**:
+    - Select **bot** scope
+    - Choose permissions like: `Read Messages`, `Send Messages`, `Embed Links`, `Use Slash Commands`
+    - Copy the generated URL and invite the bot to your server with appropriate permissions.
 
 ---
 
