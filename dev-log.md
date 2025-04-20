@@ -8,7 +8,7 @@
 - Resolve Discord token exposure
   - Attempt rebase of vulnerable file version
 - Work around missing response package
-  -Create virtual environment
+  - Create virtual environment
 - Test basic questions via Discord
 
 ## 2025, April 18
