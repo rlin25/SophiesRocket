@@ -10,7 +10,7 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 print(f"Token loaded: {DISCORD_TOKEN is not None}")
 
 # Ollama API URL and headers
-ollama_url = 'http://localhost:11434/api/chat'
+ollama_url = os.getenv("OLLAMA_API_URL")
 headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer YOUR_API_KEY'  # If your API requires an API key

@@ -1,5 +1,8 @@
 # Development Log
 
+## 2025, April 21
+- Setup Dockerfile
+
 ## 2025, April 19
 - Record `dev-log.md` updates for 4/18 - 4/19
 - Change host to Ollama
