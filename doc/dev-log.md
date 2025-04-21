@@ -2,6 +2,7 @@
 
 ## 2025, April 21
 - Dockerize SophiesRocket
+  - Updated API endpoint
 
 ## 2025, April 19
 - Record `dev-log.md` updates for 4/18 - 4/19
