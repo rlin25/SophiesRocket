@@ -43,12 +43,36 @@ python bot.py
 
 ---
 
+### Docker Setup
+
+#### 1. Build the Docker image
+
+After cloning the repo and navigating to the project directory, build the Docker image:
+
+```bash
+docker build -t sophiesrocket .
+```
+
+#### 2. Run the Docker container
+
+Once the image is built, run the container:
+
+```bash
+docker run --rm --env-file .env sophiesrocket
+```
+
+- This will automatically load the environment variables from `.env` and start the bot.
+- **Note**: Make sure `Ollama` is running on the host machine (`http://host.docker.internal:11434`).
+
+---
+
 ## Discord Developer Setup
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications).
 2. Click **"New Application"** and name it `SophiesRocket`.
 3. In the sidebar, go to **"Bot"** → click **"Add Bot"** → confirm.
 4. Under **Token**, click **"Reset Token"** → **Copy** the token.
+    - Store the value in .env as `DISCORD_TOKEN`
     - **Keep this token secret**. Never commit it to GitHub.
 5. Under **OAuth2 > URL Generator**:
     - Select **bot** scope

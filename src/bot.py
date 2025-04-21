@@ -10,7 +10,7 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 print(f"Token loaded: {DISCORD_TOKEN is not None}")
 
 # Ollama API URL and headers
-ollama_url = os.getenv("OLLAMA_API_URL")
+ollama_url = "http://host.docker.internal:11434/api/chat"
 headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer YOUR_API_KEY'  # If your API requires an API key
