@@ -4,6 +4,9 @@
 - Integrate GitHub Actions
   - Setup cached dependencies
 - Deploy bot on Railway
+  - Refactor for asynchronous HTTP requests
+- Expose server via Cloudflare Tunnel
+  - Created ollama-bot.ct.ws domain via InfinityFree
 
 ## 2025, April 21
 - Dockerize SophiesRocket
