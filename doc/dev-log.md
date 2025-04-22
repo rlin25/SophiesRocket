@@ -1,8 +1,11 @@
 # Development Log
 
+## 2025, April 22
+
 ## 2025, April 21
 - Dockerize SophiesRocket
-  - Updated API endpoint
+- Resolved issue with API endpoint
+  - Updated Ollama url to internal docker address
 
 ## 2025, April 19
 - Record `dev-log.md` updates for 4/18 - 4/19
