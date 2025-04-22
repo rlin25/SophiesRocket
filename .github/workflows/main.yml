@@ -20,7 +20,7 @@ jobs:
       with:
         python-version: '3.11'
 
-   - name: Cache pip dependencies
+    - name: Cache pip dependencies
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
@@ -36,8 +36,3 @@ jobs:
     - name: Check syntax of core files
       run: |
         python -m py_compile src/bot.py src/llm.py
-
-    - name: Run bot
-      env:
-        DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-      run: python src/bot.py
