@@ -5,10 +5,13 @@ from dotenv import load_dotenv
 import aiohttp
 import logging
 
+# Set up logging to help with debugging
+logging.basicConfig(level=logging.DEBUG)
+
 # Your Discord Bot Token
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-print(f"Token loaded: {DISCORD_TOKEN is not None}")
+logging.info(f"Token loaded: {DISCORD_TOKEN is not None}")
 
 # Ollama API URL and headers
 ollama_url = "http://api.sophiesrocket.net/api/chat"
@@ -36,10 +39,10 @@ async def query_ollama(prompt):
         async with aiohttp.ClientSession() as session:
             async with session.post(ollama_url, json=data, headers=headers) as response:
                 if response.status != 200:
-                    print(f"Error: {response.status}, {await response.text()}")
+                    logging.error(f"Error: {response.status}, {await response.text()}")
                     return None
 
-                print("Response received from Ollama")  # Debug line
+                logging.info("Response received from Ollama")  # Debug line
                 # Stream response as chunks
                 async for chunk in response.content.iter_any():
                     if chunk:  # Ensure the chunk is not empty
@@ -57,24 +60,24 @@ async def query_ollama(prompt):
                                 break  # End the loop when "done" is true
 
                         except json.JSONDecodeError as e:
-                            print(f"Error decoding JSON chunk: {e}")
+                            logging.error(f"Error decoding JSON chunk: {e}")
                             continue
 
         return combined_response
 
     except aiohttp.ClientError as e:
-        print(f"Request Error: {e}")
+        logging.error(f"Request Error: {e}")
         return None
 
 # Event when the bot is ready
 @client.event
 async def on_ready():
-    print(f'Logged in as {client.user}')  # Debug line
+    logging.info(f'Logged in as {client.user}')  # Debug line
 
 # Event when the bot receives a message
 @client.event
 async def on_message(message):
-    print(f"Received message: {message.content}")  # Debug line
+    logging.info(f"Received message: {message.content}")  # Debug line
 
     # Don't let the bot respond to itself
     if message.author == client.user:
@@ -83,13 +86,13 @@ async def on_message(message):
     # Check if the message starts with !ask
     if message.content.startswith("!ask"):
         prompt = message.content[len("!ask "):]
-        print(f"Received prompt: {prompt}")  # Debug line
+        logging.info(f"Received prompt: {prompt}")  # Debug line
 
         # Query the Ollama model for a response
         response = await query_ollama(prompt)  # Use await for async function
 
         if response:
-            print(f"Response: {response}")  # Debug line
+            logging.info(f"Response: {response}")  # Debug line
             await message.channel.send(response)
         else:
             await message.channel.send("Sorry, I couldn't process your request.")
