@@ -1,6 +1,9 @@
 # Development Log
 
 ## 2025, April 22
+- Integrate GitHub Actions
+  - Setup cached dependencies
+- Deploy bot on Railway
 
 ## 2025, April 21
 - Dockerize SophiesRocket
