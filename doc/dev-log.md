@@ -3,15 +3,16 @@
 ## 2025, April 22
 - Integrate GitHub Actions
   - Setup cached dependencies
+  - Add secret DISCORD_TOKEN
 - Deploy bot on Railway
   - Refactor for asynchronous HTTP requests
-- Expose server via Cloudflare Tunnel
-  - Created ollama-bot.ct.ws domain via InfinityFree
+- Create www.sophiesrocket.net
+  - Connect api.sophiesrocket.net to Railway
 
 ## 2025, April 21
 - Dockerize SophiesRocket
-- Resolved issue with API endpoint
-  - Updated Ollama url to internal docker address
+- Resolve issue with API endpoint
+  - Update Ollama URL to internal docker address
 
 ## 2025, April 19
 - Record `dev-log.md` updates for 4/18 - 4/19
