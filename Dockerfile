@@ -13,5 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Set the environment variable to avoid Python buffering logs
 ENV PYTHONUNBUFFERED=1
 
+# Expose the port the app will run on
+EXPOSE 8080
+
 # Command to run the bot
 CMD ["python", "./src/bot.py"]
