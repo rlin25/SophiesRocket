@@ -14,10 +14,9 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 logging.info(f"Token loaded: {DISCORD_TOKEN is not None}")
 
 # Ollama API URL and headers
-ollama_url = "http://api.sophiesrocket.net/api/chat"
+ollama_url = "http://localhost:11434/api/chat"
 headers = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer YOUR_API_KEY'  # If your API requires an API key
+    'Content-Type': 'application/json'
 }
 
 # Initialize the client with intents
@@ -72,12 +71,12 @@ async def query_ollama(prompt):
 # Event when the bot is ready
 @client.event
 async def on_ready():
-    logging.info(f'Logged in as {client.user}')  # Debug line
+    logging.info(f'Logged in as {client.user}')
 
 # Event when the bot receives a message
 @client.event
 async def on_message(message):
-    logging.info(f"Received message: {message.content}")  # Debug line
+    logging.info(f"Received message: {message.content}")
 
     # Don't let the bot respond to itself
     if message.author == client.user:
@@ -86,15 +85,16 @@ async def on_message(message):
     # Check if the message starts with !ask
     if message.content.startswith("!ask"):
         prompt = message.content[len("!ask "):]
-        logging.info(f"Received prompt: {prompt}")  # Debug line
+        logging.info(f"Received prompt: {prompt}")
 
         # Query the Ollama model for a response
         response = await query_ollama(prompt)  # Use await for async function
 
-        if response:
-            logging.info(f"Response: {response}")  # Debug line
+        if response and response.strip():
+            logging.info(f"Response: {response}")
             await message.channel.send(response)
         else:
+            logging.info("Response was empty or invalid")
             await message.channel.send("Sorry, I couldn't process your request.")
 
 # Start the bot
