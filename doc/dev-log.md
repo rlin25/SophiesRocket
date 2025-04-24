@@ -2,13 +2,15 @@
 
 ## 2025, April 24, Thursday
 - SSH into AWS EC2 from Visual Studio Code
+- Resolve 500 error: model requires more system memory
+  - Upgrade EC2 Instance to t3.xlarge
 
 ## 2025, April 23, Wednesday
 - Launch SophiesRocket-Instance on AWS EC2
 - Build Docker image
   - Add user to Docker group
 - Run Ollama with OpenHermes on AWS EC2
-- Resolve 502 error
+- Resolve 502 error: application failed to respond
   - Reverted `ollama_url` to localhost address
   - Set Docker image to run on host machine's network stack
 
