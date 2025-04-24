@@ -4,6 +4,8 @@
 - SSH into AWS EC2 from Visual Studio Code
 - Resolve 500 error: model requires more system memory
   - Upgrade EC2 Instance to t3.xlarge
+- Resolve ghost message error
+  - Delete Railway deployment
 
 ## 2025, April 23, Wednesday
 - Launch SophiesRocket-Instance on AWS EC2

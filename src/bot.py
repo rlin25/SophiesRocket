@@ -38,7 +38,7 @@ async def query_ollama(prompt):
                 if response.status != 200:
                     logging.error(f"Error: {response.status}, {await response.text()}")
                     return None
-
+            
                 result = await response.json()
                 logging.debug(f"Ollama raw result: {json.dumps(result, indent=2)}")
 
