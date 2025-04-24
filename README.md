@@ -18,36 +18,11 @@ SophiesRocket is an AI-powered Discord chatbot powered by OpenHermes via Ollama.
 
 ## Quick Start
 
-### Clone the repository
-
-```bash
-git clone https://github.com/yourusername/SophiesRocket.git
-cd SophiesRocket
-```
-
-### Windows (PowerShell)
-
-Open **PowerShell** and run:
-
-```powershell
-cd scripts
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-./setup.ps1
-```
-
-## Running the Bot
-```bash
-cd ../src
-python bot.py
-```
-
----
-
 ### Docker Setup
 
 #### 1. Build the Docker image
 
-After cloning the repo and navigating to the project directory, build the Docker image:
+First, build the Docker image:
 
 ```bash
 docker build -t sophiesrocket .
@@ -58,11 +33,10 @@ docker build -t sophiesrocket .
 Once the image is built, run the container:
 
 ```bash
-docker run --rm --env-file .env sophiesrocket
+docker run --rm --detach --network=host --env-file .env sophiesrocket
 ```
 
-- This will automatically load the environment variables from `.env` and start the bot.
-- **Note**: Make sure `Ollama` is running on the host machine (`http://host.docker.internal:11434`).
+- This runs the Docker container with the environment variables specified in `.env`, using the host network mode and starts the bot.
 
 ---
 

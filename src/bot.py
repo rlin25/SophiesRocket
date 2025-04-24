@@ -31,7 +31,6 @@ async def query_ollama(prompt):
         "model": "openhermes",  # Add the model here
         "messages": [{"role": "user", "content": prompt}]
     }
-    combined_response = ""  # Initialize an empty string to hold the full response
 
     try:
         # Use aiohttp to send an asynchronous POST request to Ollama API
@@ -42,27 +41,14 @@ async def query_ollama(prompt):
                     return None
 
                 logging.info("Response received from Ollama")  # Debug line
-                # Stream response as chunks
-                async for chunk in response.content.iter_any():
-                    if chunk:  # Ensure the chunk is not empty
-                        try:
-                            # Decode and parse the chunk into JSON
-                            chunk_data = chunk.decode("utf-8")
-                            message_data = json.loads(chunk_data)
+                # Get the full response directly (no chunking)
+                response_data = await response.json()
 
-                            # Append the content of each chunk
-                            if "message" in message_data and "content" in message_data["message"]:
-                                combined_response += message_data["message"]["content"]
+                # Extract the message content
+                if "message" in response_data and "content" in response_data["message"]:
+                    return response_data["message"]["content"]
 
-                            # Check if the response is complete
-                            if message_data.get("done", False):
-                                break  # End the loop when "done" is true
-
-                        except json.JSONDecodeError as e:
-                            logging.error(f"Error decoding JSON chunk: {e}")
-                            continue
-
-        return combined_response
+        return None
 
     except aiohttp.ClientError as e:
         logging.error(f"Request Error: {e}")
