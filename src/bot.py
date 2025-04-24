@@ -26,29 +26,27 @@ client = discord.Client(intents=intents)
 
 # Asynchronous query to Ollama API
 async def query_ollama(prompt):
-    # Prepare data for the request (include the model in the payload)
     data = {
-        "model": "openhermes",  # Add the model here
-        "messages": [{"role": "user", "content": prompt}]
+        "model": "openhermes",
+        "messages": [{"role": "user", "content": prompt}],
+        "stream": False
     }
 
     try:
-        # Use aiohttp to send an asynchronous POST request to Ollama API
         async with aiohttp.ClientSession() as session:
             async with session.post(ollama_url, json=data, headers=headers) as response:
                 if response.status != 200:
                     logging.error(f"Error: {response.status}, {await response.text()}")
                     return None
 
-                logging.info("Response received from Ollama")  # Debug line
-                # Get the full response directly (no chunking)
-                response_data = await response.json()
+                result = await response.json()
+                logging.debug(f"Ollama raw result: {json.dumps(result, indent=2)}")
 
-                # Extract the message content
-                if "message" in response_data and "content" in response_data["message"]:
-                    return response_data["message"]["content"]
+                if "error" in result:
+                    logging.error(f"Ollama error: {result['error']}")
+                    return None
 
-        return None
+                return result.get("message", {}).get("content", "")
 
     except aiohttp.ClientError as e:
         logging.error(f"Request Error: {e}")
@@ -80,7 +78,7 @@ async def on_message(message):
             logging.info(f"Response: {response}")
             await message.channel.send(response)
         else:
-            logging.info("Response was empty or invalid")
+            logging.warning("Ollama returned an empty or invalid response.")
             await message.channel.send("Sorry, I couldn't process your request.")
 
 # Start the bot
