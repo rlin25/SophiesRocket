@@ -1,20 +1,32 @@
 # Development Log
 
-## 2025, April 22
+## 2025, April 24, Thursday
+- SSH into AWS EC2 from Visual Studio Code
+
+## 2025, April 23, Wednesday
+- Launch SophiesRocket-Instance on AWS EC2
+- Build Docker image
+  - Add user to Docker group
+- Run Ollama with OpenHermes on AWS EC2
+- Resolve 502 error
+  - Reverted `ollama_url` to localhost address
+  - Set Docker image to run on host machine's network stack
+
+## 2025, April 22, Tuesday
 - Integrate GitHub Actions
   - Setup cached dependencies
-  - Add secret DISCORD_TOKEN
+  - Add secret `DISCORD_TOKEN`
 - Deploy bot on Railway
   - Refactor for asynchronous HTTP requests
 - Create www.sophiesrocket.net
   - Connect api.sophiesrocket.net to Railway
 
-## 2025, April 21
+## 2025, April 21, Monday
 - Dockerize SophiesRocket
 - Resolve issue with API endpoint
   - Update Ollama URL to internal docker address
 
-## 2025, April 19
+## 2025, April 19, Saturday
 - Record `dev-log.md` updates for 4/18 - 4/19
 - Change host to Ollama
   - Load OpenHermes 2 Mistral model
@@ -25,7 +37,7 @@
   - Create virtual environment
 - Test basic questions via Discord
 
-## 2025, April 18
+## 2025, April 18, Friday
 - Enable OpenAI-Compatible API
   - Test Connection using curl
 - Configure setup.sh
@@ -38,7 +50,7 @@
   - Log in as **SophiesRocket#3384** successfully.
   - Received positive response
 
-## 2025, April 17
+## 2025, April 17, Thursday
 - Setup GPU RunPod instance
   - GPU: x3 RTX 4090
   - Template: Text Generation WebUI
