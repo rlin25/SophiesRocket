@@ -1,20 +1,23 @@
-# Use an official Python runtime as a base image
 FROM python:3.11-slim
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the current project files into the container
+# Install build tools and dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    python3-dev \
+    git \
+    wget \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy code into the container
 COPY . /app
 
-# Install dependencies
-RUN pip install -r requirements.txt
+# Install Python dependencies
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Set the environment variable to avoid Python buffering logs
-ENV PYTHONUNBUFFERED=1
-
-# Expose the port the app will run on
-EXPOSE 8080
-
-# Command to run the bot
+# Run the bot
 CMD ["python", "./src/bot.py"]

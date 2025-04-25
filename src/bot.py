@@ -2,90 +2,104 @@ import discord
 import json
 import os
 from dotenv import load_dotenv
-import aiohttp
 import logging
+import concurrent.futures
+import asyncio
+import time
 
-# Set up logging to help with debugging
+from llama_cpp import Llama
+
+# Set up logging
 logging.basicConfig(level=logging.DEBUG)
 
-# Your Discord Bot Token
+# Load environment variables
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-logging.info(f"Token loaded: {DISCORD_TOKEN is not None}")
 
-# Ollama API URL and headers
-ollama_url = os.getenv("OLLAMA_API_URL")
-headers = {
-    'Content-Type': 'application/json'
-}
+# Path to the OpenHermes model file
+MODEL_PATH = "models/openhermes-2.5-mistral-7b.Q5_K_M.gguf"  # Update this if needed
 
-# Initialize the client with intents
+# Initialize the Llama model
+logging.info("Initializing Llama model...")
+llm = Llama(model_path=MODEL_PATH, n_ctx=2048)
+logging.info("Llama model initialized.")
+
+# Create a thread pool executor for Llama inference
+executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+
+# Initialize the Discord client with message intent
 intents = discord.Intents.default()
-intents.message_content = True  # Ensure the bot can read message content
+intents.message_content = True
 client = discord.Client(intents=intents)
 
-# Asynchronous query to Ollama API
-async def query_ollama(prompt):
-    data = {
-        "model": "openhermes",
-        "messages": [{"role": "user", "content": prompt}],
-        "stream": False
-    }
-
+# Query function using llama-cpp (run in a separate thread)
+async def query_llama_in_thread(prompt):
+    loop = asyncio.get_event_loop()
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.post(ollama_url, json=data, headers=headers) as response:
-                if response.status != 200:
-                    logging.error(f"Error: {response.status}, {await response.text()}")
-                    return None
-            
-                result = await response.json()
-                logging.debug(f"Ollama raw result: {json.dumps(result, indent=2)}")
-
-                if "error" in result:
-                    logging.error(f"Ollama error: {result['error']}")
-                    return None
-
-                return result.get("message", {}).get("content", "")
-
-    except aiohttp.ClientError as e:
-        logging.error(f"Request Error: {e}")
+        logging.info("Sending query to Llama model...")
+        start_time = time.time()
+        result = await loop.run_in_executor(executor, query_llama, prompt)
+        end_time = time.time()
+        logging.info(f"Llama query completed in {end_time - start_time:.2f} seconds.")
+        return result
+    except Exception as e:
+        logging.error(f"Error running query in thread: {e}")
         return None
 
-# Event when the bot is ready
+# Function to query the Llama model
+def query_llama(prompt):
+    try:
+        logging.info("Running prompt through Llama...")
+
+        # Modify the prompt to ask for a concise response
+        concise_prompt = f"Please provide a concise answer to the following question: {prompt}"
+        
+        output = llm(
+            prompt,
+            max_tokens=512,
+            stop=["</s>"],
+            echo=False
+        )
+        
+        if not output:
+            logging.error("No output returned from Llama.")
+            return None
+
+        logging.debug(f"Llama output: {json.dumps(output, indent=2)}")
+        return output["choices"][0]["text"].strip()
+    except Exception as e:
+        logging.error(f"Llama Error: {e}")
+        return None
+
+# Event: bot is ready
 @client.event
 async def on_ready():
     logging.info(f'Logged in as {client.user}')
 
-# Event when the bot receives a message
+# Event: message received
 @client.event
 async def on_message(message):
     logging.info(f"Received message: {message.content}")
 
-    # Don't let the bot respond to itself
     if message.author == client.user:
         return
 
-    # Check if the message starts with !ask
     if message.content.startswith("!ask"):
-        prompt = message.content[len("!ask "):]
+        prompt = message.content[len("!ask "):].strip()
 
-        # Check if the prompt is empty
         if not prompt:
             await message.channel.send("Please enter a prompt after `!ask`.")
             return
-        
-        logging.info(f"Received prompt: {prompt}")
 
-        # Use a context manager to show typing status
+        logging.info(f"Prompt: {prompt}")
+
         async with message.channel.typing():
-            response = await query_ollama(prompt)
+            response = await query_llama_in_thread(prompt)
 
-        if response and response.strip():
+        if response:
             logging.info(f"Response: {response}")
             await message.channel.send(response)
         else:
-            logging.warning("Ollama returned an empty or invalid response.")
             await message.channel.send("Sorry, I couldn't process your request.")
 
 # Start the bot
