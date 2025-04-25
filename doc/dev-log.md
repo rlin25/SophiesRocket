@@ -1,5 +1,9 @@
 # Development Log
 
+## 2025, April 25, Friday
+- Wget OpenHermes 2.5 Mistral
+  - Setup Hugging Face access token
+
 ## 2025, April 24, Thursday
 - SSH into AWS EC2 from Visual Studio Code
 - Resolve 500 error: model requires more system memory
