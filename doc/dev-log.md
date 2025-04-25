@@ -4,6 +4,10 @@
 - Wget OpenHermes 2.5 Mistral
   - Setup Hugging Face access token
 - Start SSH agent on AWS EC2
+- Switch from Ollama to llama-cpp-python
+  - Adjust Dockerfile, requirements
+- Resolve 50035 error: Invalid Form
+  - Prompt SophiesRocket to be concise
 
 ## 2025, April 24, Thursday
 - SSH into AWS EC2 from Visual Studio Code
