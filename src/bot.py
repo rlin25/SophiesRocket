@@ -69,10 +69,17 @@ async def on_message(message):
     # Check if the message starts with !ask
     if message.content.startswith("!ask"):
         prompt = message.content[len("!ask "):]
+
+        # Check if the prompt is empty
+        if not prompt:
+            await message.channel.send("Please enter a prompt after `!ask`.")
+            return
+        
         logging.info(f"Received prompt: {prompt}")
 
-        # Query the Ollama model for a response
-        response = await query_ollama(prompt)  # Use await for async function
+        # Use a context manager to show typing status
+        async with message.channel.typing():
+            response = await query_ollama(prompt)
 
         if response and response.strip():
             logging.info(f"Response: {response}")
