@@ -52,11 +52,11 @@ def query_llama(prompt):
         logging.info("Running prompt through Llama...")
 
         # Modify the prompt to ask for a concise response
-        concise_prompt = f"Please provide a concise answer to the following question: {prompt}"
+        concise_prompt = f"Please provide a concise answer to the following question in less than 100 words: {prompt}"
         
         output = llm(
             prompt,
-            max_tokens=512,
+            max_tokens=500,
             stop=["</s>"],
             echo=False
         )

@@ -1,5 +1,10 @@
 # Development Log
 
+## 2025, April 26, Saturday
+- Connect api.sophiesrocket.net to sophiesrocket-instance
+  - Allocate elastic IP address
+- Register www.fostermind.org
+
 ## 2025, April 25, Friday
 - Wget OpenHermes 2.5 Mistral
   - Setup Hugging Face access token
@@ -33,7 +38,7 @@
   - Add secret `DISCORD_TOKEN`
 - Deploy bot on Railway
   - Refactor for asynchronous HTTP requests
-- Create www.sophiesrocket.net
+- Register www.sophiesrocket.net
   - Connect api.sophiesrocket.net to Railway
 
 ## 2025, April 21, Monday

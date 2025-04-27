@@ -25,7 +25,7 @@ SophiesRocket is an AI-powered Discord chatbot powered by OpenHermes via Ollama.
 First, build the Docker image:
 
 ```bash
-docker build -t sophiesrocket .
+docker build --progress=plain -t sophiesrocket .
 ```
 
 #### 2. Run the Docker container
