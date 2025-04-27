@@ -4,6 +4,8 @@
 - Connect api.sophiesrocket.net to sophiesrocket-instance
   - Allocate elastic IP address
 - Register www.fostermind.org
+- Resolve remote unpack failed error
+  - Remove venv from GitHub
 
 ## 2025, April 25, Friday
 - Wget OpenHermes 2.5 Mistral
