@@ -1,3 +1,4 @@
-.env
+scripts/venv/
 /venv
 /models
+.env
