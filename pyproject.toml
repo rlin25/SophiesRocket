@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "sophiesrocket"
+version = "0.1.0"
+description = "A conversational AI Discord chatbot"
+authors = ["Richard Lin <richard.lin2025@gmail.com>"]
+license = "MIT"
+
+packages = [
+  { include = "sophiesrocket", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = ">=1.26.0"
+py-cord = "^2.3.0"
+python-dotenv = ">=1.0.0"
+requests = ">=2.32.3"
+aiohttp = "*"
+llama-cpp-python = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

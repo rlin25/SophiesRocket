@@ -13,11 +13,20 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy code into the container
+# Install Poetry (official way)
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+# Add Poetry to the PATH
+ENV PATH="/root/.local/bin:$PATH"
+
+# Copy all files first
 COPY . /app
 
-# Install Python dependencies
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# Install dependencies
+RUN poetry install \
+    && pip install py-cord \
+    && pip install dotenv \
+    && pip install llama-cpp-python
 
 # Run the bot
-CMD ["python", "./src/bot.py"]
+CMD ["python3", "src/sophiesrocket/bot.py"]

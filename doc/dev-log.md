@@ -1,11 +1,17 @@
 # Development Log
 
+## 2025, April 28, Saturday
+- Resolve remote unpack failed error
+  - Remove venv from GitHub using BFG Repo Cleaner
+- Connect GitHub to Jira
+- Shift from requirements.txt to pyproject.toml
+  - Convert project to a Python package
+  - Use py-cord instead of discord
+
 ## 2025, April 26, Saturday
 - Connect api.sophiesrocket.net to sophiesrocket-instance
   - Allocate elastic IP address
 - Register www.fostermind.org
-- Resolve remote unpack failed error
-  - Remove venv from GitHub
 
 ## 2025, April 25, Friday
 - Wget OpenHermes 2.5 Mistral
