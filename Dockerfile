@@ -19,9 +19,6 @@ ENV PATH="/root/.local/bin:$PATH"
 # Copy all project files first (including src/)
 COPY . /app
 
-# Disable virtualenv creation
-RUN poetry config virtualenvs.create false
-
 # Install dependencies
 RUN poetry install --no-interaction --no-ansi \
     && pip install py-cord \
