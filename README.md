@@ -33,10 +33,10 @@ docker build --progress=plain -t sophiesrocket .
 Once the image is built, run the container:
 
 ```bash
-docker run --rm --detach --network=host --env-file .env sophiesrocket
+docker run --rm --detach --network=host --env-file .env -v $(pwd)/.venv:/app/.venv sophiesrocket
 ```
 
-- This runs the Docker container with the environment variables specified in `.env`, using the host network mode and starts the bot.
+- This runs the Docker container with the environment variables specified in `.env`, uses the host's network, sets up a persistent .venv volume, and starts the bot
 
 ---
 

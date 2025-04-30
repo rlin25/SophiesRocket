@@ -1,6 +1,18 @@
 # Development Log
 
-## 2025, April 28, Saturday
+## 2025, April 30, Wednesday
+- Resolve improper Dockerfile dependency imports
+- Update Python version to 3.12
+  - Limit operations to within virtual environment
+- Split Dockerfile into two stages
+  - Copy only necessary files between stages
+
+## 2025, April 29, Tuesday
+- Add cron job to prune unused Docker resources
+- Update poetry version
+  - Tell bash to check ~/.local/bin first
+
+## 2025, April 28, Monday
 - Resolve remote unpack failed error
   - Remove venv from GitHub using BFG Repo Cleaner
 - Connect GitHub to Jira
