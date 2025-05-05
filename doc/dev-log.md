@@ -1,5 +1,8 @@
 # Development Log
 
+### May 4, 2025 (Sunday)
+- Updated `dev-log.md` styling
+
 ### April 30, 2025 (Wednesday)
 - Resolved Dockerfile dependency import issues.
 - Upgraded Python version to 3.12.
