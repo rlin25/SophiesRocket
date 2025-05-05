@@ -1,99 +1,99 @@
 # Development Log
 
-## 2025, April 30, Wednesday
-- Resolve improper Dockerfile dependency imports
-- Update Python version to 3.12
-  - Limit operations to within virtual environment
-- Split Dockerfile into two stages
-  - Copy only necessary files between stages
+### April 30, 2025 (Wednesday)
+- Resolved Dockerfile dependency import issues.
+- Upgraded Python version to 3.12.
+- Restricted operations to virtual environment only.
+- Refactored Dockerfile into multi-stage build:
+  - Ensured only essential files are copied between stages.
 
-## 2025, April 29, Tuesday
-- Add cron job to prune unused Docker resources
-- Update poetry version
-  - Tell bash to check ~/.local/bin first
+### April 29, 2025 (Tuesday)
+- Implemented cron job to prune unused Docker resources.
+- Upgraded Poetry version:
+  - Ensured Bash prioritizes `~/.local/bin`.
 
-## 2025, April 28, Monday
-- Resolve remote unpack failed error
-  - Remove venv from GitHub using BFG Repo Cleaner
-- Connect GitHub to Jira
-- Shift from requirements.txt to pyproject.toml
-  - Convert project to a Python package
-  - Use py-cord instead of discord
+### April 28, 2025 (Monday)
+- Fixed “remote unpack failed” error:
+  - Removed `.venv` directory from GitHub history using BFG Repo-Cleaner.
+- Linked GitHub repository to Jira.
+- Migrated from `requirements.txt` to `pyproject.toml`:
+  - Converted project into a Python package.
+  - Replaced `discord.py` with `py-cord`.
 
-## 2025, April 26, Saturday
-- Connect api.sophiesrocket.net to sophiesrocket-instance
-  - Allocate elastic IP address
-- Register www.fostermind.org
+### April 26, 2025 (Saturday)
+- Connected `api.sophiesrocket.net` to the EC2 instance.
+  - Allocated Elastic IP address.
+- Registered domain: `www.fostermind.org`.
 
-## 2025, April 25, Friday
-- Wget OpenHermes 2.5 Mistral
-  - Setup Hugging Face access token
-- Start SSH agent on AWS EC2
-- Switch from Ollama to llama-cpp-python
-  - Adjust Dockerfile, requirements
-- Resolve 50035 error: Invalid Form
-  - Prompt SophiesRocket to be concise
+### April 25, 2025 (Friday)
+- Downloaded OpenHermes 2.5 Mistral model:
+  - Configured Hugging Face access token.
+- Initialized SSH agent on AWS EC2.
+- Migrated from Ollama to `llama-cpp-python`:
+  - Updated Dockerfile and project dependencies.
+- Resolved Discord error `50035: Invalid Form`:
+  - Adjusted bot responses for clarity and brevity.
 
-## 2025, April 24, Thursday
-- SSH into AWS EC2 from Visual Studio Code
-- Resolve 500 error: model requires more system memory
-  - Upgrade EC2 Instance to t3.xlarge
-- Solve ghost message logic error
-  - Delete Railway deployment
-- Allow project access from home
-  - Update AWS EC2 Security Groups
+### April 24, 2025 (Thursday)
+- Enabled SSH access to EC2 via Visual Studio Code.
+- Resolved server error due to insufficient memory:
+  - Upgraded EC2 instance to `t3.xlarge`.
+- Fixed ghost message logic issue:
+  - Removed Railway deployment.
+- Allowed secure home access to project:
+  - Updated EC2 Security Group rules.
 
-## 2025, April 23, Wednesday
-- Launch SophiesRocket-Instance on AWS EC2
-- Build Docker image
-  - Add user to Docker group
-- Run Ollama with OpenHermes on AWS EC2
-- Resolve 502 error: application failed to respond
-  - Reverted `ollama_url` to localhost address
-  - Set Docker image to run on host machine's network stack
+### April 23, 2025 (Wednesday)
+- Launched SophiesRocket instance on AWS EC2.
+- Built Docker image:
+  - Added user to Docker group.
+- Deployed OpenHermes model with Ollama on EC2.
+- Resolved 502 error (application non-responsive):
+  - Reverted `ollama_url` to `localhost`.
+  - Configured Docker to use host network.
 
-## 2025, April 22, Tuesday
-- Integrate GitHub Actions
-  - Setup cached dependencies
-  - Add secret `DISCORD_TOKEN`
-- Deploy bot on Railway
-  - Refactor for asynchronous HTTP requests
-- Register www.sophiesrocket.net
-  - Connect api.sophiesrocket.net to Railway
+### April 22, 2025 (Tuesday)
+- Integrated GitHub Actions CI/CD pipeline:
+  - Configured dependency caching.
+  - Added secret: `DISCORD_TOKEN`.
+- Deployed bot on Railway:
+  - Refactored for asynchronous HTTP communication.
+- Registered domain `www.sophiesrocket.net`:
+  - Linked `api.sophiesrocket.net` to Railway.
 
-## 2025, April 21, Monday
-- Dockerize SophiesRocket
-- Resolve issue with API endpoint
-  - Update Ollama URL to internal docker address
+### April 21, 2025 (Monday)
+- Dockerized SophiesRocket application.
+- Resolved API endpoint routing issue:
+  - Updated Ollama URL to use Docker internal address.
 
-## 2025, April 19, Saturday
-- Record `dev-log.md` updates for 4/18 - 4/19
-- Change host to Ollama
-  - Load OpenHermes 2 Mistral model
-- Fix split JSON response error
-- Resolve Discord token exposure
-  - Attempt rebase of vulnerable file version
-- Work around missing response package
-  - Create virtual environment
-- Test basic questions via Discord
+### April 19, 2025 (Saturday)
+- Logged development updates from April 18–19.
+- Switched host to Ollama:
+  - Loaded OpenHermes 2 Mistral model.
+- Fixed JSON response splitting issue.
+- Addressed Discord token exposure:
+  - Attempted rebase to remove sensitive history.
+- Implemented workaround for missing response package:
+  - Created virtual environment.
+- Conducted Discord-based prompt testing.
 
-## 2025, April 18, Friday
-- Enable OpenAI-Compatible API
-  - Test Connection using curl
-- Configure setup.sh
-- Setup Discord Bot
-  - Set configuration via [Discord Developer Portal](https://discord.com/developers/applications)
-  - Stored Discord bot token in `.env` file
-  - Set required **Privileged Gateway Intents**
-- Test Discord Connection
-  - Invite bot to custom server using OAuth2
-  - Log in as **SophiesRocket#3384** successfully.
-  - Received positive response
+### April 18, 2025 (Friday)
+- Enabled OpenAI-compatible API:
+  - Verified connection using `curl`.
+- Configured `setup.sh`.
+- Set up Discord bot:
+  - Configured application via [Discord Developer Portal](https://discord.com/developers/applications).
+  - Secured token in `.env` file.
+  - Enabled necessary **Privileged Gateway Intents**.
+- Tested Discord integration:
+  - Invited bot using OAuth2.
+  - Logged in as **SophiesRocket#3384**.
+  - Confirmed successful interaction.
 
-## 2025, April 17, Thursday
-- Setup GPU RunPod instance
-  - GPU: x3 RTX 4090
-  - Template: Text Generation WebUI
-- Load OpenHermes Mixtral model
-  - Source: TheBloke/OpenHermes-2.5-Mistral-7B-GGUF
-  - Model: openhermes-2.5-mistral-7b.Q5_K_M.gguf
+### April 17, 2025 (Thursday)
+- Deployed GPU instance via RunPod:
+  - Specs: 3× RTX 4090.
+  - Template: Text Generation WebUI.
+- Loaded OpenHermes Mixtral model:
+  - Source: TheBloke/OpenHermes-2.5-Mistral-7B-GGUF.
+  - Format: `openhermes-2.5-mistral-7b.Q5_K_M.gguf`.
